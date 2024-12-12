@@ -1,0 +1,6 @@
+CREATE USER 'userapp'@'localhost' 
+IDENTIFIED BY 'olivia.2023';
+
+GRANT ALL PRIVILEGES ON *.* 
+TO 'userapp'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
