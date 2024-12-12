@@ -1,6 +1,5 @@
 const mysql = require('mysql2');
 
-// Configuración de la conexión a la base de datos
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'userapp',
@@ -8,7 +7,6 @@ const connection = mysql.createConnection({
   database: 'BancoDB'
 });
 
-// Conexión a la base de datos
 connection.connect((err) => {
   if (err) {
     console.error('Error al conectar a la base de datos:', err);
@@ -16,14 +14,12 @@ connection.connect((err) => {
   }
   console.log('Conexión a la base de datos exitosa!');
 
-  // Consultas a la base de datos
   obtenerCuentas();
   obtenerClientes();
   obtenerCuentasConClientes();
   obtenerClientesSinCuentas();
 });
 
-// Función para obtener todas las cuentas
 function obtenerCuentas() {
   const query = 'SELECT * FROM cuentas';
   connection.query(query, (err, results) => {
@@ -36,7 +32,6 @@ function obtenerCuentas() {
   });
 }
 
-// Función para obtener todos los clientes
 function obtenerClientes() {
   const query = 'SELECT * FROM clientes';
   connection.query(query, (err, results) => {
@@ -49,7 +44,6 @@ function obtenerClientes() {
   });
 }
 
-// Función para obtener las cuentas asociadas a clientes
 function obtenerCuentasConClientes() {
   const query = `
     SELECT c.nombre, cu.tipo_cuenta, cu.saldo
@@ -66,7 +60,6 @@ function obtenerCuentasConClientes() {
   });
 }
 
-// Función para obtener los clientes sin cuentas asociadas
 function obtenerClientesSinCuentas() {
   const query = `
     SELECT c.nombre
